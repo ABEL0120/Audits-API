@@ -27,9 +27,9 @@ class AuditSeeder extends Seeder
         // 1. Supervisor
         $supervisor = User::create([
             'name' => 'Supervisor Demo',
-            'email' => 'supervisor@example.com',
-            'password' => Hash::make('Sup3rV!s0r'),
-            'employee_number' => 'SUP1001',
+            'email' => 'sv.ops.8842@example.com',
+            'password' => Hash::make('P@zn9$Fk2!Lm5#Qr'),
+            'employee_number' => 'SUP8842',
             'role' => 'supervisor',
             'active' => true,
         ]);
@@ -37,9 +37,9 @@ class AuditSeeder extends Seeder
         // 2. Técnico
         $technician = User::create([
             'name' => 'Technician Demo',
-            'email' => 'technician@example.com',
-            'password' => Hash::make('T3chn!c!an'),
-            'employee_number' => 'TEC2001',
+            'email' => 'tc.field.2291@example.com',
+            'password' => Hash::make('Gy7$Wx3!Hb8#Vq2Z'),
+            'employee_number' => 'TEC2291',
             'role' => 'technician',
             'active' => true,
         ]);
