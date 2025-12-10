@@ -24,11 +24,11 @@ class AuditSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Supervisor HOLA FORK
+        // 1. Supervisor
         $supervisor = User::create([
             'name' => 'Supervisor Demo',
             'email' => 'supervisor@example.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Sup3rV!s0r'),
             'employee_number' => 'SUP1001',
             'role' => 'supervisor',
             'active' => true,
@@ -38,10 +38,37 @@ class AuditSeeder extends Seeder
         $technician = User::create([
             'name' => 'Technician Demo',
             'email' => 'technician@example.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('T3chn!c!an'),
             'employee_number' => 'TEC2001',
             'role' => 'technician',
             'active' => true,
         ]);
+
+        // 3. Lineas de Produccion
+        $lines = [];
+        $lineData = [
+            ['code' => 'L001', 'name' => 'Linea de Ensamble A', 'area' => 'Planta Baja'],
+            ['code' => 'L002', 'name' => 'Linea de Pintura', 'area' => 'Nave 2'],
+            ['code' => 'L003', 'name' => 'Linea de Empaque', 'area' => 'Almacen'],
+            ['code' => 'L004', 'name' => 'Linea de Soldadura', 'area' => 'Nave 1'],
+            ['code' => 'L005', 'name' => 'Linea de Calidad', 'area' => 'Laboratorio'],
+        ];
+
+        foreach ($lineData as $data) {
+            $lines[] = ProductionLine::create($data);
+        }
+
+        // 4. Herramientas
+        $tools = [
+            ['code' => 'H001', 'name' => 'Taladro Percutor', 'model' => 'DeWalt DWD520', 'description' => 'Taladro de alto rendimiento', 'line_id' => $lines[0]->id],
+            ['code' => 'H002', 'name' => 'Pistola de Pintura', 'model' => 'Sata Jet 5000', 'description' => 'Pistola HVLP para acabados finos', 'line_id' => $lines[1]->id],
+            ['code' => 'H003', 'name' => 'Selladora Automatica', 'model' => 'PackMore 3000', 'description' => 'Selladora de cajas de carton', 'line_id' => $lines[2]->id],
+            ['code' => 'H004', 'name' => 'Soldadora MIG', 'model' => 'Miller Millermatic 252', 'description' => 'Soldadora para acero al carbon', 'line_id' => $lines[3]->id],
+            ['code' => 'H005', 'name' => 'Microscopio Digital', 'model' => 'Leica DMS1000', 'description' => 'Microscopio para inspeccion de calidad', 'line_id' => $lines[4]->id],
+        ];
+
+        foreach ($tools as $tool) {
+            Tool::create($tool);
+        }
     }
 }
