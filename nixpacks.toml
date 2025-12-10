@@ -1,5 +1,6 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.pdo_mysql", "php82Extensions.mysqlnd", "composer", "nodejs", "npm"]
+# OJO: Agregué la librería 'mariadb-connector-c' que a veces es necesaria para que pdo_mysql jale bien en Linux
+nixPkgs = ["php82", "php82Extensions.pdo_mysql", "php82Extensions.mysqlnd", "mariadb-connector-c", "composer", "nodejs", "npm"]
 
 [phases.build]
 cmds = [
