@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Audit extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = [
-        'assignment_id','technician_id','supervisor_id',
-        'employee_number','audit_code','line_id','shift',
-        'status','summary','overall_result','started_at','ended_at'
+        'assignment_id',
+        'technician_id',
+        'supervisor_id',
+        'employee_number',
+        'audit_code',
+        'line_id',
+        'shift',
+        'status',
+        'summary',
+        'overall_result',
+        'started_at',
+        'ended_at'
     ];
 
     protected $casts = [

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tool extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
-    protected $fillable = ['code','name', 'model', 'description', 'line_id', 'active'];
+    protected $fillable = ['code', 'name', 'model', 'description', 'line_id', 'active'];
 
     protected $casts = ['active' => 'boolean'];
 

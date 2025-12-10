@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assignment extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = ['supervisor_id', 'technician_id', 'line_id', 'shift', 'status', 'assigned_at', 'due_at', 'notes'];
 

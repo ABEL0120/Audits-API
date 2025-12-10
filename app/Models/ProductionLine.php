@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductionLine extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = ['code', 'name', 'area', 'active'];
 
