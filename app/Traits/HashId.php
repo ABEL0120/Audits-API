@@ -67,8 +67,18 @@ trait HashId
     {
         $attributes = parent::toArray();
 
+        // Hash ID
         if (isset($attributes[$this->getKeyName()])) {
             $attributes[$this->getKeyName()] = $this->getRouteKey();
+        }
+
+        // Hash Foreign Keys
+        if (property_exists($this, 'hashKeys') && is_array($this->hashKeys)) {
+            foreach ($this->hashKeys as $key) {
+                if (isset($attributes[$key]) && !empty($attributes[$key])) {
+                    $attributes[$key] = Hashids::connection($this->getHashidsConnection())->encode($attributes[$key]);
+                }
+            }
         }
 
         return $attributes;

@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class AuditReview extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = [
-        'audit_id','supervisor_id','decision','notes','reviewed_at'
+        'audit_id',
+        'supervisor_id',
+        'decision',
+        'notes',
+        'reviewed_at'
     ];
+
+    protected $hashKeys = ['audit_id', 'supervisor_id'];
 
     protected $casts = [
         'reviewed_at' => 'datetime',

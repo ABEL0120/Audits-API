@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class AuditItem extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = ['audit_id', 'tool_id', 'result', 'status', 'comments', 'defects'];
+
+    protected $hashKeys = ['audit_id', 'tool_id'];
 
     protected $casts = ['defects' => 'array'];
 
@@ -35,5 +37,4 @@ class AuditItem extends Model
             Log::info('🟢 MODEL UPDATED:', $item->toArray());
         });
     }
-
 }

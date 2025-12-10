@@ -11,6 +11,8 @@ class Tool extends Model
 
     protected $fillable = ['code', 'name', 'model', 'description', 'line_id', 'active'];
 
+    protected $hashKeys = ['line_id'];
+
     protected $casts = ['active' => 'boolean'];
 
     public function line()

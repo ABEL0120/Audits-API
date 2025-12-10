@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class AuditPhoto extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HashId;
 
     protected $fillable = ['audit_item_id', 'path', 'caption', 'taken_at', 'meta'];
+
+    protected $hashKeys = ['audit_item_id'];
 
     protected $casts = [
         'taken_at' => 'datetime',

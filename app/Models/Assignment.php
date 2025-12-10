@@ -11,6 +11,8 @@ class Assignment extends Model
 
     protected $fillable = ['supervisor_id', 'technician_id', 'line_id', 'shift', 'status', 'assigned_at', 'due_at', 'notes'];
 
+    protected $hashKeys = ['supervisor_id', 'technician_id', 'line_id'];
+
     protected $casts = ['assigned_at' => 'datetime', 'due_at' => 'datetime'];
 
     public function supervisor()

@@ -24,6 +24,8 @@ class Audit extends Model
         'ended_at'
     ];
 
+    protected $hashKeys = ['assignment_id', 'technician_id', 'supervisor_id', 'line_id'];
+
     protected $casts = [
         'started_at' => 'datetime',
         'ended_at' => 'datetime',
