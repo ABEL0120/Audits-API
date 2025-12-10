@@ -13,7 +13,7 @@ trait HashId
      */
     public function getRouteKey()
     {
-        return Hashids::connection($this->getHashidsConnection())->encode(parent::getRouteKey());
+        return parent::getRouteKey();
     }
 
     /**
@@ -25,17 +25,7 @@ trait HashId
      */
     public function resolveRouteBinding($value, $field = null)
     {
-        if ($field) {
-            return parent::resolveRouteBinding($value, $field);
-        }
-
-        $decoded = Hashids::connection($this->getHashidsConnection())->decode($value);
-
-        if (empty($decoded)) {
-            return null;
-        }
-
-        return $this->where($this->getKeyName(), $decoded[0])->first();
+        return parent::resolveRouteBinding($value, $field);
     }
 
     /**
@@ -45,7 +35,7 @@ trait HashId
      */
     public function getHashIdAttribute()
     {
-        return Hashids::connection($this->getHashidsConnection())->encode($this->getKey());
+        return $this->getKey();
     }
 
     /**
@@ -55,7 +45,7 @@ trait HashId
      */
     protected function getHashidsConnection()
     {
-        return property_exists($this, 'hashidsConnection') ? $this->hashidsConnection : 'main';
+        return 'main';
     }
 
     /**
@@ -65,22 +55,6 @@ trait HashId
      */
     public function toArray()
     {
-        $attributes = parent::toArray();
-
-        // Hash ID
-        if (isset($attributes[$this->getKeyName()])) {
-            $attributes[$this->getKeyName()] = $this->getRouteKey();
-        }
-
-        // Hash Foreign Keys
-        if (property_exists($this, 'hashKeys') && is_array($this->hashKeys)) {
-            foreach ($this->hashKeys as $key) {
-                if (isset($attributes[$key]) && !empty($attributes[$key])) {
-                    $attributes[$key] = Hashids::connection($this->getHashidsConnection())->encode($attributes[$key]);
-                }
-            }
-        }
-
-        return $attributes;
+        return parent::toArray();
     }
 }
