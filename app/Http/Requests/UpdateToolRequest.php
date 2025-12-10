@@ -6,6 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateToolRequest extends FormRequest
 {
+    use \App\Traits\DecodesHashIds;
+
+    protected $hashKeys = ['line_id'];
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -23,8 +27,8 @@ class UpdateToolRequest extends FormRequest
     {
         $id = $this->route('tool')?->id ?? $this->route('tool');
         return [
-            'code'        => 'sometimes|required|string|max:50|unique:tools,code,'.$id,
-            'name'        => 'sometimes|required|string|max:80|unique:tools,name,'.$id,
+            'code'        => 'sometimes|required|string|max:50|unique:tools,code,' . $id,
+            'name'        => 'sometimes|required|string|max:80|unique:tools,name,' . $id,
             'model'       => 'sometimes|required|string|max:80',
             'description' => 'sometimes|nullable|string',
             'line_id'     => 'sometimes|nullable|integer|exists:production_lines,id',

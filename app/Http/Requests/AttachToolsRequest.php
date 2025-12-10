@@ -6,6 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AttachToolsRequest extends FormRequest
 {
+    use \App\Traits\DecodesHashIds;
+
+    protected $hashKeys = ['tools'];
+
     /**
      * Determine if the user is authorized to make this request.
      */

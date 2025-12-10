@@ -6,6 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAuditRequest extends FormRequest
 {
+    use \App\Traits\DecodesHashIds;
+
+    protected $hashKeys = ['assignment_id', 'technician_id'];
+
     /**
      * Determine if the user is authorized to make this request.
      */
