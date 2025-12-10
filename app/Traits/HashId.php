@@ -57,4 +57,20 @@ trait HashId
     {
         return property_exists($this, 'hashidsConnection') ? $this->hashidsConnection : 'main';
     }
+
+    /**
+     * Convert the model instance to an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $attributes = parent::toArray();
+
+        if (isset($attributes[$this->getKeyName()])) {
+            $attributes[$this->getKeyName()] = $this->getRouteKey();
+        }
+
+        return $attributes;
+    }
 }
