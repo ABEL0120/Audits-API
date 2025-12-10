@@ -52,6 +52,10 @@ return [
             ],
         ],
 
+        'resend' => [
+            'transport' => 'resend',
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],
