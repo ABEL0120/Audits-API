@@ -30,7 +30,7 @@ return [
 
         'main' => [
             'salt' => env('HASHIDS_SALT', 'your-salt-string'),
-            'length' => env('HASHIDS_LENGTH', 10),
+            'length' => (int) env('HASHIDS_LENGTH', 10),
         ],
 
         'alternative' => [
