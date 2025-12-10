@@ -24,7 +24,7 @@ class AuditSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Supervisor
+        // 1. Supervisor HOLA FORK
         $supervisor = User::create([
             'name' => 'Supervisor Demo',
             'email' => 'supervisor@example.com',
